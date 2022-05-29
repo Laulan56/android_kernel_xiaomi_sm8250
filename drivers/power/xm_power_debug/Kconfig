@@ -1,6 +1,0 @@
-config XM_POWER_DEBUG
-	bool "XM Power Debug Feature"
-	default n
-	help
-	  XM Power Debug Feature
-
