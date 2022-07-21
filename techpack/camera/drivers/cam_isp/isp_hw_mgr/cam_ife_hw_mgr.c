@@ -3835,7 +3835,7 @@ static int cam_ife_mgr_config_hw(void *hw_mgr_priv,
 		for (i = 0; i < CAM_IFE_HW_CONFIG_WAIT_MAX_TRY; i++) {
 			rem_jiffies = wait_for_completion_timeout(
 				&ctx->config_done_complete,
-				msecs_to_jiffies(30));
+				msecs_to_jiffies(100));
 			if (rem_jiffies == 0) {
 				if (!cam_cdm_detect_hang_error(
 						ctx->cdm_handle)) {
@@ -4420,6 +4420,7 @@ start_only:
 			hw_mgr_res->hw_res[0]->rdi_only_ctx =
 				ctx->is_rdi_only_context;
 		}
+
 		rc = cam_ife_hw_mgr_start_hw_res(hw_mgr_res, ctx);
 		if (rc) {
 			CAM_ERR(CAM_ISP, "Can not start IFE Mux (%d)",
